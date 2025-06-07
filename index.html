@@ -21,7 +21,7 @@
           <p id="nav-descr">Travel recommendation</p>
         </section>
         <section class="nav-href">
-          <a href="travel_recommendation.html">Main page</a><br />
+          <a href="index.html">Main page</a><br />
           <a href="about_us.html">About us</a><br />
           <a href="contact_us.html">Contact</a>
         </section>
@@ -31,7 +31,7 @@
             type="text"
             placeholder="Enter a description or keywords"
           />
-          <button id="btnSearch" onclick="loadImage()">Search</button>
+          <button id="btnSearch">Search</button>
           <button id="btnReset">Reset</button>
         </section>
       </nav>
@@ -55,13 +55,30 @@
         our trusted travel agency.
       </p>
       <nav id="socialMedia">
-        <img src="./Image/icons8-facebook-48.png" alt="icon of facebook" />
-        <img src="./Image/icons8-instagram-48.png" alt="icon of instagram" />
-        <img src="./Image/icons8-telegram-app-48.png" alt="icon of telegram" />
-        <img src="./Image/icons8-twitter-48.png" alt="icon of twitter" />
+        <ul>
+          <li>
+            <img src="./Image/icons8-facebook-48.png" alt="icon of facebook" />
+          </li>
+          <li>
+            <img
+              src="./Image/icons8-instagram-48.png"
+              alt="icon of instagram"
+            />
+          </li>
+          <li>
+            <img
+              src="./Image/icons8-telegram-app-48.png"
+              alt="icon of telegram"
+            />
+          </li>
+          <li>
+            <img src="./Image/icons8-twitter-48.png" alt="icon of twitter" />
+          </li>
+        </ul>
       </nav>
+      <div id="resultDiv"></div>
     </main>
     <footer>Icons by <b>icons8</b></footer>
-    <!-- <script src="travel_recommendation.js"></script> -->
+    <script src="travel_recommendation.js"></script>
   </body>
 </html>

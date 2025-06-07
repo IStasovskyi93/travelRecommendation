@@ -6,7 +6,6 @@
 body {
   background-color: rgb(255, 255, 255);
   background-image: url(./Image/bridge.jpg);
-  /* background-blend-mode: luminosity; */
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -83,11 +82,6 @@ h1 {
   margin: 100px 0 0 130px;
 }
 
-main {
-  display: flex;
-  flex-direction: row;
-  align-content: space-between;
-}
 .mainText {
   margin: 40px 0 0 110px;
   color: rgb(225, 224, 224);
@@ -100,18 +94,16 @@ main {
   float: left;
 }
 
-#socialMedia {
+#socialMedia ul {
   position: absolute;
-  left: 1rem;
+  padding-left: 0;
   top: 300px;
-  display: flex;
-  flex-direction: column;
 }
 
 footer {
   position: absolute;
-  left: 0;
-  bottom: 0;
+  left: 5px;
+  bottom: 0px;
   color: antiquewhite;
 }
 
@@ -190,4 +182,25 @@ form input {
 
 form textarea {
   border-radius: 10px;
+}
+#resultDiv {
+  float: right;
+  background-color: #74a9ff;
+  border-radius: 15px;
+  text-align: center;
+  position: absolute;
+  top: 100px;
+  right: 10px;
+  padding-top: 50px;
+  color: black;
+  width: 700px;
+  font-family: "titleFont", Arial, Helvetica, sans-serif;
+}
+#resultDiv img {
+  border-radius: 15px;
+  width: 550px;
+}
+#resultDiv p {
+  font-size: 1rem;
+  margin: 0px 75px 30px 75px;
 }

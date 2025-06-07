@@ -1,77 +1,51 @@
-let countrySearch = document.getElementById("countrySearch").value;
-// fetch("travel_recommendation_api.json")
-//   .then((response) => {
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     return response.json();
-//   })
-//   .then((data) => {
-//     const imageUrl = data.imageUrl; // Предполагается, что URL изображения хранится в свойстве "imageUrl"
-//     // Теперь `imageUrl` содержит URL изображения
-//     return loadImage(imageUrl); // Функция для загрузки изображения
-//   })
-//   .catch((error) => {
-//     console.error("Error fetching or parsing JSON:", error);
-//   });
+function imageUrl() {
+  const input = document.getElementById("countrySearch").value.toLowerCase();
+  const resultDiv = document.getElementById("resultDiv");
+  resultDiv.innerHTML = "";
 
-function loadImage() {
   fetch("travel_recommendation_api.json")
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      const imageUrl = data.imageUrl; // Предполагается, что URL изображения хранится в свойстве "imageUrl"
-      // Теперь `imageUrl` содержит URL изображения
-      // return loadImage(imageUrl); // Функция для загрузки изображения
-      const response = fetch(data);
-      const blob = response.Blob(data);
-      const img = document.createElement("img");
-      img.src = URL.createObjectURL(blob);
-      // Здесь вы можете добавить изображение на страницу, например, в HTML:
-      document.body.appendChild(img);
-      return img;
+      switch (input) {
+        case "countries":
+          for (let i = 0; i < 2; i++) {
+            const destination = data.countries[i];
+            resultDiv.innerHTML += `<img src="${destination.imageUrl}" alt="hjh">`;
+            resultDiv.innerHTML += `<h2>${destination.name}</h2>`;
+            resultDiv.innerHTML += `<p>Description: ${destination.description}</p>`;
+          }
+          break;
+        case "temples":
+          for (let i = 0; i < 2; i++) {
+            const destination = data.temples[i];
+            resultDiv.innerHTML += `<img src="${destination.imageUrl}" alt="hjh">`;
+            resultDiv.innerHTML += `<h2>${destination.name}</h2>`;
+            resultDiv.innerHTML += `<p>Description: ${destination.description}</p>`;
+          }
+          break;
+        case "beaches":
+          for (let i = 0; i < 2; i++) {
+            const destination = data.beaches[i];
+            resultDiv.innerHTML += `<img src="${destination.imageUrl}" alt="hjh">`;
+            resultDiv.innerHTML += `<h2>${destination.name}</h2>`;
+            resultDiv.innerHTML += `<p>Description: ${destination.description}</p>`;
+          }
+          break;
+        default:
+          resultDiv.innerHTML = "Search about 'countries, beaches, temples'.";
+          break;
+      }
     })
     .catch((error) => {
-      console.error("Error fetching or parsing JSON:", error);
+      console.error("Error:", error);
+      resultDiv.innerHTML = "An error occurred while fetching data.";
     });
-  // const response = fetch(data);
-  // const blob = response.blob();
-  // const img = document.createElement("img");
-  // img.src = URL.createObjectURL(blob);
-  // // Здесь вы можете добавить изображение на страницу, например, в HTML:
-  // document.body.appendChild(img);
-  // return img;
 }
+btnSearch.addEventListener("click", imageUrl);
 
-// async function loadImage(data) {
-//   try {
-//     const response = await fetch(data);
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! status: ${response.status}`);
-//     }
-//     const blob = await response.blob();
-//     const img = document.createElement("img");
-//     img.src = URL.createObjectURL(blob);
-//     // Здесь вы можете добавить изображение на страницу, например, в HTML:
-//     document.body.appendChild(img);
-//     return img;
-//   } catch (error) {
-//     console.error("Error loading image:", error);
-//     return null;
-//   }
-// }
-
-// if (countrySearch.toLowerCase() === data) {
-//   // } else {
-//   //   alert("You should to search about (countries, cities, beaches)");
-//   // }
-
-// if (countrySearch === "countries") {
-//   let imageUrl = data.countries[0].cities[0].imageUrl;
-// } else {
-//   let imageUrl = data.countrySearch[0].imageUrl;
-// }
+function clearSearch() {
+  resultDiv.innerHTML = "";
+  const input = document.getElementById("countrySearch");
+  input.value = "";
+}
+btnReset.addEventListener("click", clearSearch);
